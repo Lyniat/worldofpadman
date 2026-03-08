@@ -845,7 +845,8 @@ static void R_CreateScratchImage(void) {
 void R_InitImages(void) {
 	memset(hashTable, 0, sizeof(hashTable));
 
-	vk_createStagingBuffer(8 * 1024 * 1024);
+	// vk_createStagingBuffer(8 * 1024 * 1024); // FIXME: using only '8' causes crash
+	vk_createStagingBuffer(80 * 1024 * 1024); // FIXME: Is there a better number?
 
 	// setup the overbright lighting
 

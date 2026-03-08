@@ -113,13 +113,14 @@ foreach (shader ${SHADER_SRCS})
 	)
 endforeach()
 
-if (USE_RENDERER_DLOPEN)
+#if (USE_RENDERER_DLOPEN)
 	list(APPEND SRCS
 		../qcommon/q_shared.c
 		../qcommon/puff.c
 		../qcommon/q_math.c
+		patch.c
 	)
-endif()
+#endif()
 
 project(renderer_vulkan)
 wop_add_library(TARGET ${PROJECT_NAME} SRCS ${SRCS})

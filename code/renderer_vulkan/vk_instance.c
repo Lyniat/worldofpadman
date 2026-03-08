@@ -366,7 +366,8 @@ static void vk_selectPhysicalDevice(void) {
 		}
 	}
 
-	vk.physical_device = pPhyDev[device_index];
+	// vk.physical_device = pPhyDev[device_index];
+	vk.physical_device = pPhyDev[0]; //FIXME: this is only for using MoltenVK
 
 	ri.Hunk_FreeTempMemory(pPhyDev);
 
