@@ -118,7 +118,6 @@ endforeach()
 		../qcommon/q_shared.c
 		../qcommon/puff.c
 		../qcommon/q_math.c
-		patch.c
 	)
 #endif()
 

@@ -121,10 +121,9 @@ if (USE_RENDERER_DLOPEN)
 else()
 	# if we don't use dlopen for loading the renderer library, we give the gl2 renderer
 	# the highest priority
-	#if (BUILD_RENDERER_OPENGL2)
-	#	target_link_libraries(${PROJECT_NAME} renderer_opengl2)
-	#elseif (BUILD_RENDERER_VULKAN)
-	if (BUILD_RENDERER_VULKAN)
+	if (BUILD_RENDERER_OPENGL2)
+		target_link_libraries(${PROJECT_NAME} renderer_opengl2)
+	elseif (BUILD_RENDERER_VULKAN)
 		target_link_libraries(${PROJECT_NAME} renderer_vulkan)
 	else()
 		target_link_libraries(${PROJECT_NAME} renderer_opengl1)
