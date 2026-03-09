@@ -10,6 +10,8 @@
 #include "render_export.h"
 
 #define IMAGE_CHUNK_SIZE (64 * 1024 * 1024)
+#define LOCAL_MEMORY_CHUNKS 16
+#define STAGING_BUFFER_SIZE (64 * 1024 * 1024)
 
 struct StagingBuffer_t {
 	// Vulkan supports two primary resource types: buffers and images.
@@ -33,7 +35,7 @@ struct ImageChunk_t {
 
 struct deviceLocalMemory_t {
 	// One large device device local memory allocation, assigned to multiple images
-	struct ImageChunk_t Chunks[8];
+	struct ImageChunk_t Chunks[LOCAL_MEMORY_CHUNKS];
 	uint32_t Index; // number of chunks used
 };
 
@@ -244,6 +246,10 @@ This is the only way any image_t are created
 ================
 */
 static void vk_createImageAndBindWithMemory(image_t *pImg) {
+    if (devMemImg.Index >= LOCAL_MEMORY_CHUNKS) {
+        ri.Error(ERR_FATAL, "vk_createImageAndBindWithMemory: maximum number of image memory chunks reached (%u)", LOCAL_MEMORY_CHUNKS);
+    }
+
 	VkImageCreateInfo desc;
 	VkMemoryRequirements memory_requirements;
 	uint32_t mask;
@@ -846,10 +852,9 @@ void R_InitImages(void) {
 	memset(hashTable, 0, sizeof(hashTable));
 
 	// vk_createStagingBuffer(8 * 1024 * 1024); // FIXME: using only '8' causes crash
-	vk_createStagingBuffer(80 * 1024 * 1024); // FIXME: Is there a better number?
+	vk_createStagingBuffer(STAGING_BUFFER_SIZE); // FIXME: Is there a better number?
 
 	// setup the overbright lighting
-
 	tr.identityLight = 1.0f;
 	tr.identityLightByte = 255 * tr.identityLight;
 
