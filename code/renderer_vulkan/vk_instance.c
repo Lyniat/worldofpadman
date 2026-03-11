@@ -361,17 +361,21 @@ static void vk_selectPhysicalDevice(void) {
 		ri.Printf(PRINT_ALL, " %i: %s\n", i, renderer_name(&props));
 		if (device_index == -1 && props.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) {
 			device_index = i;
+#ifdef __APPLE__
+		// Allow MoltenVK
+		} else if (device_index == -1 && props.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) {
+			device_index = i;
+#endif
 		} else if (device_index == -2 && props.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) {
 			device_index = i;
 		}
 	}
 
-	// vk.physical_device = pPhyDev[device_index];
-	vk.physical_device = pPhyDev[0]; //FIXME: this is only for using MoltenVK
+	vk.physical_device = pPhyDev[device_index];
 
 	ri.Hunk_FreeTempMemory(pPhyDev);
 
-	ri.Printf(PRINT_ALL, " Total %d graphics card, %i is choosed.\n", gpu_count, device_index);
+	ri.Printf(PRINT_ALL, " Total %d graphics card, %i is chose.\n", gpu_count, device_index);
 
 	ri.Printf(PRINT_ALL, " Get physical device memory properties: vk.devMemProperties\n");
 	qvkGetPhysicalDeviceMemoryProperties(vk.physical_device, &vk.devMemProperties);
