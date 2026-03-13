@@ -65,8 +65,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define STAT_MINUS 10 // num frame for '-' stats digit
 
 #define ICON_SIZE 48
-#define CHAR_WIDTH 32
-#define CHAR_HEIGHT 48
 #define TEXT_ICON_SPACE 4
 
 #define TEAMCHAT_WIDTH 80
@@ -1238,6 +1236,7 @@ extern vmCvar_t cg_mapInfoTime;
 extern vmCvar_t cg_showMapInfo;
 extern vmCvar_t cg_drawAmmoWarning;
 extern vmCvar_t cg_drawCrosshair;
+extern vmCvar_t cg_drawTraceCrosshair;
 extern vmCvar_t cg_drawCrosshairNames;
 extern vmCvar_t cg_drawRewards;
 extern vmCvar_t cg_drawTeamOverlay;
@@ -1344,9 +1343,6 @@ extern vmCvar_t cg_chatHeight;
 extern vmCvar_t cg_drawChatIcon;
 
 extern vmCvar_t cg_icons;
-
-extern vmCvar_t cg_ft_thawerIconX;
-extern vmCvar_t cg_ft_thawerIconY;
 
 //
 // cg_main.c

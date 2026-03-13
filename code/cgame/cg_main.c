@@ -95,6 +95,7 @@ vmCvar_t cg_mapInfoTime;
 vmCvar_t cg_showMapInfo;
 vmCvar_t cg_drawAmmoWarning;
 vmCvar_t cg_drawCrosshair;
+vmCvar_t cg_drawTraceCrosshair;
 vmCvar_t cg_drawCrosshairNames;
 vmCvar_t cg_drawRewards;
 vmCvar_t cg_fovAspectAdjust;
@@ -204,10 +205,6 @@ vmCvar_t cg_drawChatIcon;
 
 vmCvar_t cg_icons;
 
-// freezetag
-vmCvar_t cg_ft_thawerIconX;
-vmCvar_t cg_ft_thawerIconY;
-
 typedef struct {
 	vmCvar_t *vmCvar;
 	const char *cvarName;
@@ -235,6 +232,7 @@ static cvarTable_t cvarTable[] = {	   // bk001129
 	{&cg_drawAmmoWarning, "cg_drawAmmoWarning", "1", CVAR_ARCHIVE},
 	{&cg_drawAttacker, "cg_drawAttacker", "1", CVAR_ARCHIVE},
 	{&cg_drawCrosshair, "cg_drawCrosshair", "1", CVAR_ARCHIVE},
+	{&cg_drawTraceCrosshair, "cg_drawTraceCrosshair", "1", CVAR_ARCHIVE},
 	{&cg_drawCrosshairNames, "cg_drawCrosshairNames", "1", CVAR_ARCHIVE},
 	{&cg_drawRewards, "cg_drawRewards", "1", CVAR_ARCHIVE},
 	{&cg_fovAspectAdjust, "cg_fovAspectAdjust", "1", CVAR_ARCHIVE},
@@ -340,10 +338,6 @@ static cvarTable_t cvarTable[] = {	   // bk001129
 
 	{&cg_chatHeight, "cg_chatHeight", "4", CVAR_ARCHIVE},
 	{&cg_drawChatIcon, "cg_drawChatIcon", "2", CVAR_ARCHIVE},
-
-	// freezetag
-	{&cg_ft_thawerIconX, "cg_FT_thawerIconX", "320", CVAR_ARCHIVE},
-	{&cg_ft_thawerIconY, "cg_FT_thawerIconY", "290", CVAR_ARCHIVE},
 
 	// Should match enum of (ICON_ALL & ~ICON_TEAMMATE)
 	{&cg_icons, "cg_icons", "123", CVAR_ARCHIVE}};
