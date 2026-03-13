@@ -252,8 +252,8 @@ static void CG_OffsetThirdPersonView(void) {
 
 	AngleVectors(cg.refdefViewAngles, forward, right, up);
 
-	forwardScale = cos(cg_thirdPersonAngle.value / 180 * M_PI);
-	sideScale = sin(cg_thirdPersonAngle.value / 180 * M_PI);
+	forwardScale = cos(cg_thirdPersonAngle.value / 180 * M_PI) - 0.2; // - 0.2 add by lyniat
+	sideScale = sin(cg_thirdPersonAngle.value / 180 * M_PI) - 0.3; // - 0.2 add by lyniat
 	VectorMA(view, -cg_thirdPersonRange.value * forwardScale, forward, view);
 	VectorMA(view, -cg_thirdPersonRange.value * sideScale, right, view);
 
