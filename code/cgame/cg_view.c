@@ -225,6 +225,7 @@ static void CG_OffsetThirdPersonView(void) {
 	vec3_t focusPoint;
 	float focusDist;
 	float forwardScale, sideScale;
+	float sideOffset;
 
 	cg.refdef.vieworg[2] += cg.predictedPlayerState.viewheight;
 
@@ -252,8 +253,14 @@ static void CG_OffsetThirdPersonView(void) {
 
 	AngleVectors(cg.refdefViewAngles, forward, right, up);
 
+	sideOffset = cg_thirdPersonSideOffset.value;
+	if (sideOffset > 100) {
+		sideOffset = 100;
+	} else if (sideOffset < -100) {
+		sideOffset = -100;
+	}
 	forwardScale = cos(cg_thirdPersonAngle.value / 180 * M_PI) - 0.2; // - 0.2 add by lyniat
-	sideScale = sin(cg_thirdPersonAngle.value / 180 * M_PI) - 0.3; // - 0.2 add by lyniat
+	sideScale = sin(cg_thirdPersonAngle.value / 180 * M_PI) - (sideOffset / 100) * 0.3;
 	VectorMA(view, -cg_thirdPersonRange.value * forwardScale, forward, view);
 	VectorMA(view, -cg_thirdPersonRange.value * sideScale, right, view);
 

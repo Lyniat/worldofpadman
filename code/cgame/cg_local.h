@@ -1275,6 +1275,7 @@ extern vmCvar_t cg_fov;
 extern vmCvar_t cg_zoomFov;
 extern vmCvar_t cg_thirdPersonRange;
 extern vmCvar_t cg_thirdPersonAngle;
+extern vmCvar_t cg_thirdPersonSideOffset;
 extern vmCvar_t cg_thirdPerson;
 extern vmCvar_t cg_lagometer;
 extern vmCvar_t cg_drawAttacker;
