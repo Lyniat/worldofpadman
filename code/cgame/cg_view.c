@@ -545,10 +545,10 @@ static int CG_CalcFov(void) {
 		if (cg.zoomed) {
 			if (cg.snap->ps.weapon == WP_SPLASHER) {
 				if (cg.zoomedkeydown) {
-					f = (cg.time - cg.zoomTime) / 2000.0f;
+					f = 0.7f; //(cg.time - cg.zoomTime) / 2000.0f;
 					cg.zoomfactor = f;
-					if (cg.zoomfactor > 1.0f)
-						cg.zoomfactor = 1.0f;
+					if (cg.zoomfactor > 0.7f)
+						cg.zoomfactor = 0.7f;
 				}
 
 				fov_x = fov_x + cg.zoomfactor * (zoomFov - fov_x);
