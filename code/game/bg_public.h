@@ -550,6 +550,8 @@ typedef enum {
 	EV_TAUNT_GUARDBASE,
 	EV_TAUNT_PATROL,
 
+	EV_HITMARKER,
+
 	EV_EVENT_MAX
 } entity_event_t;
 

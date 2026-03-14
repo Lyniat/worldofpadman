@@ -1096,7 +1096,9 @@ const char *entity_event_names[] = {"EV_NONE",
 									"EV_TAUNT_FOLLOWME",
 									"EV_TAUNT_GETFLAG",
 									"EV_TAUNT_GUARDBASE",
-									"EV_TAUNT_PATROL"};
+									"EV_TAUNT_PATROL",
+
+									"EV_HITMARKER"};
 
 CASSERT(ARRAY_LEN(entity_event_names) == EV_EVENT_MAX);
 

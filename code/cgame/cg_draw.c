@@ -1696,13 +1696,12 @@ static void CG_DrawCrosshair(void) {
 
 	w = h = cg_crosshairSize.value;
 
-	// pulse the size of the crosshair when picking up items
-	f = cg.time - cg.itemPickupBlendTime;
-	if (f > 0 && f < ITEM_BLOB_TIME) {
-		f /= ITEM_BLOB_TIME;
-		w *= (1 + f);
-		h *= (1 + f);
+	f = (float)(HITMARKER_TIME - (cg.time - cg.hitmarkerTime)) / (float)HITMARKER_TIME;
+	if (f < 0) {
+		f = 0;
 	}
+	w *= (1 + f);
+	h *= (1 + f);
 
 	x = cg_crosshairX.integer;
 	y = cg_crosshairY.integer;

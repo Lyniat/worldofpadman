@@ -1202,6 +1202,12 @@ void CG_EntityEvent(centity_t *cent, vec3_t position) {
 		CG_Boomies_Explosion(position);
 		break;
 
+	case EV_HITMARKER:
+		if (es->number == cg.snap->ps.clientNum) {
+			cg.hitmarkerTime = cg.time;
+		}
+		break;
+
 	case EV_DEBUG_LINE:
 		CG_Beam(cent);
 		break;
