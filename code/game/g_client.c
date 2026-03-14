@@ -809,8 +809,11 @@ void ClientUserinfoChanged(int clientNum) {
 
 	health = atoi(Info_ValueForKey(userinfo, "handicap"));
 	client->pers.maxHealth = health;
-	if (client->pers.maxHealth < 1 || client->pers.maxHealth > 100) {
+	if (client->pers.maxHealth < 1) {
 		client->pers.maxHealth = 100;
+	}
+	if (client->pers.maxHealth > 200) {
+		client->pers.maxHealth = 200;
 	}
 	client->ps.stats[STAT_MAX_HEALTH] = client->pers.maxHealth;
 
@@ -1217,8 +1220,11 @@ void ClientSpawn(gentity_t *ent) {
 	trap_GetUserinfo(index, userinfo, sizeof(userinfo));
 	// set max health
 	client->pers.maxHealth = atoi(Info_ValueForKey(userinfo, "handicap"));
-	if (client->pers.maxHealth < 1 || client->pers.maxHealth > 100) {
+	if (client->pers.maxHealth < 1) {
 		client->pers.maxHealth = 100;
+	}
+	if (client->pers.maxHealth > 200) {
+		client->pers.maxHealth = 200;
 	}
 	// clear entity values
 	client->ps.stats[STAT_MAX_HEALTH] = client->pers.maxHealth;
