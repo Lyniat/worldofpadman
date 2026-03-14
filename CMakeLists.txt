@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(WorldOfPadman VERSION 1.7.0 LANGUAGES C ASM ASM_MASM)
+project(WorldOfPadman VERSION 1.7.0 LANGUAGES C ASM)
 
 include(CheckSymbolExists)
 include(CheckCCompilerFlag)
@@ -27,6 +27,7 @@ option(USE_VOIP "" ON)
 option(USE_MUMBLE "" ON)
 
 if (MSVC)
+	enable_language(ASM_MASM)
 	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 	set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} /MANIFEST:NO")
