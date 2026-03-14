@@ -812,8 +812,8 @@ void ClientUserinfoChanged(int clientNum) {
 	if (client->pers.maxHealth < 1) {
 		client->pers.maxHealth = 100;
 	}
-	if (client->pers.maxHealth > 400) {
-		client->pers.maxHealth = 400;
+	if (client->pers.maxHealth > 200) {
+		client->pers.maxHealth = 200;
 	}
 	client->ps.stats[STAT_MAX_HEALTH] = client->pers.maxHealth;
 
@@ -1223,8 +1223,8 @@ void ClientSpawn(gentity_t *ent) {
 	if (client->pers.maxHealth < 1) {
 		client->pers.maxHealth = 100;
 	}
-	if (client->pers.maxHealth > 400) {
-		client->pers.maxHealth = 400;
+	if (client->pers.maxHealth > 200) {
+		client->pers.maxHealth = 200;
 	}
 	// clear entity values
 	client->ps.stats[STAT_MAX_HEALTH] = client->pers.maxHealth;
