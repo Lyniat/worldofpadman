@@ -127,6 +127,10 @@ set(LIBS jpeg zlib SDL2::SDL2)
 if (MSVC)
 	list(APPEND LIBS ws2_32 winmm psapi gdi32 ole32)
 endif()
+if (APPLE)
+	list(APPEND LIBS MoltenVK)
+	target_link_directories(${PROJECT_NAME} PRIVATE ../../libs/MoltenVK/dylib/macOS)
+endif()
 target_link_libraries(${PROJECT_NAME} ${LIBS})
 
 set(RENDERER_DEFINES)
@@ -136,3 +140,8 @@ endif()
 if (RENDERER_DEFINES)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE ${RENDERER_DEFINES})
 endif()
+
+set_target_properties(renderer_vulkan PROPERTIES
+		BUILD_RPATH "@loader_path"
+		INSTALL_RPATH "@loader_path"
+)
