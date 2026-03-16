@@ -703,12 +703,12 @@ void G_Damage(gentity_t *victim, gentity_t *inflictor, gentity_t *attacker, vec3
 	int knockback;
 	int max;
 
-	if (!victim->takedamage) {
-		return;
-	}
-
 	if (attacker && victim != attacker) {
 		G_AddEvent(attacker, EV_HITMARKER, 0);
+	}
+
+	if (!victim->takedamage) {
+		return;
 	}
 
 	// the intermission has already been qualified for, so don't
