@@ -976,6 +976,7 @@ void G_Damage(gentity_t *victim, gentity_t *inflictor, gentity_t *attacker, vec3
 				}
 				FT_FreezePlayer(victim, attacker);
 			} else {
+				G_AddEvent(attacker, EV_HITMARKER, 1);
 				victim->die(victim, inflictor, attacker, take, mod);
 			}
 			return;

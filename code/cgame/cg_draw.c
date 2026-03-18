@@ -1686,6 +1686,7 @@ static void CG_DrawCrosshair(void) {
 	}
 
 	// set color based on health
+	/*
 	if (cg_crosshairHealth.integer) {
 		vec4_t hcolor;
 
@@ -1694,6 +1695,7 @@ static void CG_DrawCrosshair(void) {
 	} else {
 		trap_R_SetColor(NULL);
 	}
+	 */
 
 	w = h = cg_crosshairSize.value;
 
@@ -1705,8 +1707,8 @@ static void CG_DrawCrosshair(void) {
 	w *= 1;
 	h *= 1;
 
-	w2 = w * (1.1 + f);
-	h2 = h * (1.1 + f);
+	w2 = w * (1.3 + f);
+	h2 = h * (1.3 + f);
 
 	x = cg_crosshairX.integer;
 	y = cg_crosshairY.integer;
@@ -1744,7 +1746,11 @@ static void CG_DrawCrosshair(void) {
 
 		CG_DrawPic(x - 0.5f * w, y - 0.5f * h, w, h, hShader);
         if (f != 0) {
+			if(cg.hitmarkerType != 0) {
+				trap_R_SetColor(colorRed);
+			}
             CG_DrawPic(x - 0.5f * w2, y - 0.5f * h2, w2, h2, hitmarkerShader);
+			trap_R_SetColor(NULL);
         }
 
 		lastPositionX = x;
@@ -1753,7 +1759,11 @@ static void CG_DrawCrosshair(void) {
 		CG_DrawPic(((SCREEN_WIDTH - w) * 0.5f) + x, ((SCREEN_HEIGHT - h) * 0.5f) + y, w, h, hShader);
 
         if (f != 0) {
+			if(cg.hitmarkerType != 0) {
+				trap_R_SetColor(colorRed);
+			}
             CG_DrawPic(((SCREEN_WIDTH - w2) * 0.5f) + x, ((SCREEN_HEIGHT - h2) * 0.5f) + y, w2, h2, hitmarkerShader);
+			trap_R_SetColor(NULL);
         }
 	}
 	trap_R_SetColor(NULL);

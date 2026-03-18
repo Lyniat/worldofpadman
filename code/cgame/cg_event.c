@@ -1204,7 +1204,13 @@ void CG_EntityEvent(centity_t *cent, vec3_t position) {
 
 	case EV_HITMARKER:
 		if (es->number == cg.snap->ps.clientNum) {
+			if (cg.hitmarkerTime != cg.time) {
+				cg.hitmarkerType = 0;
+			}
 			cg.hitmarkerTime = cg.time;
+			if (es->eventParm != 0) { // dead
+				cg.hitmarkerType = 1;
+			}
 		}
 		break;
 

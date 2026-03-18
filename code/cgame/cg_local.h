@@ -700,6 +700,7 @@ typedef struct {
 	qboolean Cam;
 
 	int hitmarkerTime;
+	int hitmarkerType;
 } cg_t;
 
 // all of the model, shader, and sound references that are
@@ -1042,6 +1043,7 @@ typedef struct {
 	sfxHandle_t hitSound;
 	sfxHandle_t hitShieldSound;
 	sfxHandle_t hitNoShieldSound;
+	sfxHandle_t hitKillSound;
 	sfxHandle_t hitTeamSound;
 	sfxHandle_t excellentSound;
 	sfxHandle_t snackattackSound;

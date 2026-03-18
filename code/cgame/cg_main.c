@@ -758,6 +758,7 @@ static void CG_RegisterSounds(void) {
 	cgs.media.hitSound = trap_S_RegisterSound("sound/feedback/hit", qfalse);
 	cgs.media.hitShieldSound = trap_S_RegisterSound("sound/feedback/hit_shield", qfalse );
 	cgs.media.hitNoShieldSound = trap_S_RegisterSound("sound/feedback/hit_noshield", qfalse );
+	cgs.media.hitKillSound = trap_S_RegisterSound("hit_kill", qfalse );
 
 	cgs.media.excellentSound = trap_S_RegisterSound("sound/feedback/awards/excellent", qtrue);
 	cgs.media.snackattackSound = trap_S_RegisterSound("sound/feedback/awards/snackattack", qtrue);
