@@ -763,7 +763,7 @@ static void UI_Preferences_CrosshairDraw(void *self) {
 	if (!s->curvalue) {
 		return;
 	}
-	UI_DrawHandlePic(x + SMALLCHAR_WIDTH, y - 4, 24, 24, s_preferences.crosshairShader[s->curvalue]);
+	UI_DrawHandlePic(x + SMALLCHAR_WIDTH, y - 4, 24, 24, s_preferences.crosshairShader[0]);
 }
 
 /*
@@ -1514,9 +1514,10 @@ void UI_Preferences_Cache(void) {
 	trap_R_RegisterShaderNoMip(HELP0);
 	trap_R_RegisterShaderNoMip(HELP1);
 
-	for (n = 0; n < NUM_CROSSHAIRS; n++) {
-		s_preferences.crosshairShader[n] = trap_R_RegisterShaderNoMip(va("gfx/2d/crosshair%c", 'a' + n));
-	}
+	//for (n = 0; n < NUM_CROSSHAIRS; n++) {
+	//	s_preferences.crosshairShader[n] = trap_R_RegisterShaderNoMip(va("gfx/2d/crosshair%c", 'a' + n));
+	//}
+	s_preferences.crosshairShader[0] = trap_R_RegisterShaderNoMip("crosshair_lyn");
 }
 
 /*

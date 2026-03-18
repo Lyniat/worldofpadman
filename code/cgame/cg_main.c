@@ -946,9 +946,12 @@ static void CG_RegisterGraphics(void) {
 
 	cgs.media.selectShader = trap_R_RegisterShaderNoMip("gfx/2d/select");
 
-	for (i = 0; i < NUM_CROSSHAIRS; i++) {
-		cgs.media.crosshairShader[i] = trap_R_RegisterShaderNoMip(va("gfx/2d/crosshair%c", ('a' + i)));
-	}
+	//for (i = 0; i < NUM_CROSSHAIRS; i++) {
+	//	cgs.media.crosshairShader[i] = trap_R_RegisterShaderNoMip("crosshair_lyn");
+	//}
+
+	cgs.media.crosshairShader[0] = trap_R_RegisterShaderNoMip("crosshair_lyn");
+	cgs.media.hitmarkerShader = trap_R_RegisterShaderNoMip("hitmarker_lyn");
 
 	cgs.media.backTileShader = trap_R_RegisterShader("gfx/2d/backtile");
 	cgs.media.noammoShader = trap_R_RegisterShaderNoMip("gfx/2d/noammo");

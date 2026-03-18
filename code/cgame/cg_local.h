@@ -48,7 +48,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define ITEM_SCALEUP_TIME 1000
 #define ZOOM_TIME 150
 #define ITEM_BLOB_TIME 200
-#define HITMARKER_TIME 500
+#define HITMARKER_TIME 300
 #define MUZZLE_FLASH_TIME 20
 #define SINK_TIME 1000 // time for fragments to sink into ground before going away
 #define ATTACKER_HEAD_TIME 10000
@@ -75,7 +75,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define GIANT_WIDTH 32
 #define GIANT_HEIGHT 48
 
-#define NUM_CROSSHAIRS 12
+//#define NUM_CROSSHAIRS 12
+#define NUM_CROSSHAIRS 1
 
 #define TEAM_OVERLAY_MAXNAME_WIDTH 12
 #define TEAM_OVERLAY_MAXLOCATION_WIDTH 16
@@ -756,6 +757,7 @@ typedef struct {
 
 	qhandle_t tracerShader;
 	qhandle_t crosshairShader[NUM_CROSSHAIRS];
+	qhandle_t hitmarkerShader;
 	qhandle_t lagometerShader;
 	qhandle_t backTileShader;
 	qhandle_t noammoShader;

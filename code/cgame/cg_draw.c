@@ -1657,8 +1657,9 @@ CG_DrawCrosshair
 =================
 */
 static void CG_DrawCrosshair(void) {
-	float w, h;
+	float w, h, w2, h2;
 	qhandle_t hShader;
+	qhandle_t hitmarkerShader;
 	float f;
 	float x, y;
 	int ca;
@@ -1700,8 +1701,12 @@ static void CG_DrawCrosshair(void) {
 	if (f < 0) {
 		f = 0;
 	}
-	w *= (1 + f);
-	h *= (1 + f);
+
+	w *= 1;
+	h *= 1;
+
+	w2 = w * (1.1 + f);
+	h2 = h * (1.1 + f);
 
 	x = cg_crosshairX.integer;
 	y = cg_crosshairY.integer;
@@ -1710,7 +1715,8 @@ static void CG_DrawCrosshair(void) {
 	if (ca < 0) {
 		ca = 0;
 	}
-	hShader = cgs.media.crosshairShader[ca % NUM_CROSSHAIRS];
+	hShader = cgs.media.crosshairShader[0];
+	hitmarkerShader = cgs.media.hitmarkerShader;
 
 	if (cg.renderingThirdPerson) {
 		if (cg_drawTraceCrosshair.integer <= 0) {
@@ -1737,11 +1743,18 @@ static void CG_DrawCrosshair(void) {
 		y = LERP(lastPositionY, y, (float)(cg.frametime / 1000.00f) * 18.0f);
 
 		CG_DrawPic(x - 0.5f * w, y - 0.5f * h, w, h, hShader);
+        if (f != 0) {
+            CG_DrawPic(x - 0.5f * w2, y - 0.5f * h2, w2, h2, hitmarkerShader);
+        }
 
 		lastPositionX = x;
 		lastPositionY = y;
 	} else {
 		CG_DrawPic(((SCREEN_WIDTH - w) * 0.5f) + x, ((SCREEN_HEIGHT - h) * 0.5f) + y, w, h, hShader);
+
+        if (f != 0) {
+            CG_DrawPic(((SCREEN_WIDTH - w2) * 0.5f) + x, ((SCREEN_HEIGHT - h2) * 0.5f) + y, w2, h2, hitmarkerShader);
+        }
 	}
 	trap_R_SetColor(NULL);
 }
@@ -1788,7 +1801,7 @@ static void CG_DrawCrosshair3D(void) {
 	if (ca < 0) {
 		ca = 0;
 	}
-	hShader = cgs.media.crosshairShader[ca % NUM_CROSSHAIRS];
+	hShader = cgs.media.crosshairShader[0];
 
 	// Use a different method rendering the crosshair so players don't see two of them when
 	// focusing their eyes at distant objects with high stereo separation
