@@ -392,7 +392,7 @@ qboolean CG_DrawOldScoreboard(void) {
 
 	score = CG_GetScoreForClient(cg.clientNum);
 
-	if (cg.showScores || cg.predictedPlayerState.pm_type == PM_DEAD ||
+	if (cg.showScores || /*cg.predictedPlayerState.pm_type == PM_DEAD || */
 		cg.predictedPlayerState.pm_type == PM_INTERMISSION) {
 		fade = 1.0f;
 		fadeColor = colorWhite;

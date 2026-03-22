@@ -842,6 +842,7 @@ typedef struct {
 	qhandle_t zoomruler;
 	qhandle_t zoomcompass;
 	sfxHandle_t zoomsound[9];
+	sfxHandle_t zoomsound_klick;
 	qhandle_t zoomhud_kma; // kma
 	qhandle_t zoomKMAaura;
 	qhandle_t zoomKMAbluescreen;

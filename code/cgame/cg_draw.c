@@ -3606,11 +3606,17 @@ static void CG_DrawZoom(void) {
 			// figure out which one
 			if (cg.snap->ps.weapon == WP_SPLASHER) {
 				// splasher Zoom-HUD stuff
+				/*
 				if (cg.zoomSoundStat > 0 && cg.zoomSoundStat <= 9 &&
 					(cg.time - cg.zoomTime) >= 200 * (cg.zoomSoundStat - 1)) {
 					trap_S_StartLocalSound(cgs.media.zoomsound[cg.zoomSoundStat - 1], CHAN_LOCAL_SOUND);
 					cg.zoomSoundStat++;
 				}
+				 */
+                if (cg.zoomSoundStat > 0 && cg.zoomSoundStat <= 1) {
+                    trap_S_StartLocalSound(cgs.media.zoomsound_klick, CHAN_LOCAL_SOUND);
+                    cg.zoomSoundStat++;
+                }
 
 				CG_SetScreenPlacement(PLACE_CENTER, PLACE_CENTER);
 				CG_DrawPic(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, cgs.media.zoomhud);

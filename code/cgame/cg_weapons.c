@@ -542,6 +542,7 @@ NOADDITIONALMODELS:
 		for (i = 0; i <= 8; i++) {
 			cgs.media.zoomsound[i] = trap_S_RegisterSound(va("sound/weapons/splasher/zoom0%i", i), qtrue);
 		}
+		cgs.media.zoomsound_klick = trap_S_RegisterSound("zoom_klick", qfalse);
 		cgs.media.zoomhud = trap_R_RegisterShaderNoMip("gfx/zoom/scope");
 		cgs.media.zoomruler = trap_R_RegisterShaderNoMip("gfx/zoom/ruler");
 		cgs.media.zoomcompass = trap_R_RegisterShaderNoMip("gfx/zoom/compass");
