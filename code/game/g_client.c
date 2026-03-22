@@ -754,7 +754,8 @@ if desired.
 */
 void ClientUserinfoChanged(int clientNum) {
 	gentity_t *ent;
-	int teamLeader, team, health, randomColor;
+	int teamLeader, team, health, noob, randomColor;
+    float noobHealth;
 	const char *s;
 	char model[MAX_QPATH];
 	char headModel[MAX_QPATH];
@@ -808,7 +809,9 @@ void ClientUserinfoChanged(int clientNum) {
 	}
 
 	health = atoi(Info_ValueForKey(userinfo, "handicap"));
-	client->pers.maxHealth = health;
+    noob = atoi(Info_ValueForKey(userinfo, "noob"));
+    noobHealth = (float)health * ((float)(noob) / 100.0f + 1.0f);
+	client->pers.maxHealth = (int)noobHealth;
 	if (client->pers.maxHealth < 1) {
 		client->pers.maxHealth = 100;
 	}
@@ -1145,6 +1148,9 @@ void ClientSpawn(gentity_t *ent) {
 	int eventSequence;
 	char userinfo[MAX_INFO_STRING];
 
+    int health, noob;
+    float noobHealth;
+
 	index = ent - g_entities;
 	client = ent->client;
 
@@ -1219,7 +1225,10 @@ void ClientSpawn(gentity_t *ent) {
 
 	trap_GetUserinfo(index, userinfo, sizeof(userinfo));
 	// set max health
-	client->pers.maxHealth = atoi(Info_ValueForKey(userinfo, "handicap"));
+    health = atoi(Info_ValueForKey(userinfo, "handicap"));
+    noob = atoi(Info_ValueForKey(userinfo, "noob"));
+    noobHealth = (float)health * ((float)(noob) / 100.0f + 1.0f);
+    client->pers.maxHealth = (int)noobHealth;
 	if (client->pers.maxHealth < 1) {
 		client->pers.maxHealth = 100;
 	}

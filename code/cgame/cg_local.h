@@ -1353,6 +1353,8 @@ extern vmCvar_t cg_drawChatIcon;
 
 extern vmCvar_t cg_icons;
 
+extern vmCvar_t noob;
+
 //
 // cg_main.c
 //

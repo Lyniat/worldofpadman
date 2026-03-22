@@ -206,6 +206,8 @@ vmCvar_t cg_drawChatIcon;
 
 vmCvar_t cg_icons;
 
+vmCvar_t noob;
+
 typedef struct {
 	vmCvar_t *vmCvar;
 	const char *cvarName;
@@ -342,7 +344,8 @@ static cvarTable_t cvarTable[] = {	   // bk001129
 	{&cg_drawChatIcon, "cg_drawChatIcon", "2", CVAR_ARCHIVE},
 
 	// Should match enum of (ICON_ALL & ~ICON_TEAMMATE)
-	{&cg_icons, "cg_icons", "123", CVAR_ARCHIVE}};
+	{&cg_icons, "cg_icons", "123", CVAR_ARCHIVE},
+	{&noob, "noob", "0", CVAR_USERINFO | CVAR_ARCHIVE}};
 
 static const int cvarTableSize = ARRAY_LEN(cvarTable);
 
