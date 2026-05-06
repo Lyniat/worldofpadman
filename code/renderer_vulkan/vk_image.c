@@ -10,7 +10,7 @@
 #include "render_export.h"
 
 #define IMAGE_CHUNK_SIZE (64 * 1024 * 1024)
-#define LOCAL_MEMORY_CHUNKS 16
+#define LOCAL_MEMORY_CHUNKS 32
 #define STAGING_BUFFER_SIZE (64 * 1024 * 1024)
 
 struct StagingBuffer_t {
