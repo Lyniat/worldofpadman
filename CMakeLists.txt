@@ -20,8 +20,6 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
-add_compile_options(/forceInterlockedFunctions-)
-
 option(DEFAULT_BASEDIR "" "")
 option(BUILD_CLIENT "" ON)
 option(BUILD_SERVER "" ON)
@@ -63,6 +61,12 @@ else()
 	set(USE_INTERNAL_OPUS OFF)
 	set(USE_INTERNAL_OPUSFILE OFF)
 	set(USE_INTERNAL_ZLIB OFF)
+endif()
+
+if(MSVC AND MSVC_C_ARCHITECTURE_ID STREQUAL "ARM64")
+    message(STATUS "Windows ARM64 MSVC")
+	# seems to be a bug in a specific SDL2 version: https://github.com/libsdl-org/SDL/issues/13254
+	add_compile_options(/forceInterlockedFunctions-)
 endif()
 
 if (MSVC)
