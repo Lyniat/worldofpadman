@@ -51,8 +51,14 @@ profile
 *.pdb
 *.so
 *.dylib
+*.ilk
 
 /wop.*
 /woptest*
 /wopded.*
 /libSDL2*
+
+/.vs
+/out
+
+CMakeSettings.json
